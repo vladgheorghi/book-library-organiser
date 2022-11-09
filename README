@@ -1,0 +1,112 @@
+Facultatea de Automatica si Calculatoare, UPB
+Year 1, Semester 2
+Data Structures - Homework #2 - The Library of HashBabel
+
+Gheorghiu Doru-Vlad
+312CA
+
+Description:
+	
+	Line command interface for manipulating data inside a library with
+	books (dictionaries with keyword and meaning), using hashtables for
+	both so it can be easier to acces data, that also has a user interface
+	(also a hashtable) with different functionalities.
+	
+	You can adds books inside the library, add definitions inside a
+	specific book, or if you're an user, you can even borrow or return
+	books, or if you're messy, declare a book as lost. At the end the
+	program will print a top listing the best books by a rating, calculated
+	as given_grade/borrow_count, and a list of the top users by a score
+	(only unbanned users will be shown).
+	
+Commands:
+	1. ADD_BOOK <book_name> <def_number>
+	<def_key1> <def_val1>
+	<def_key2> <def_val2>
+	...
+
+		-> adds a book inside the library with a specified number
+		of definitions
+	
+	2. GET_BOOK <book_name>
+	
+		-> returns information about a specified book
+	
+	3. RMV_BOOK <book_name>
+	
+		-> removes a book from the library
+	
+	4. ADD_DEF <book_name> <def_key> <def_val>
+	
+		-> adds a definition inside a specified book
+	
+	5. GET_DEF <book_name> <def_key>
+	
+		-> returns the value of a definition's key inside a specified book
+	
+	6. RMV_DEF <book_name> <def_key>
+	
+		-> removes the definition with the key 'def_key' inside a
+		specified book
+	
+	7. ADD_USER <user_name>
+		
+		-> adds a user inside the user hashtable
+	
+	8. BORROW <user_name> <book_name> <days_available>
+		
+		-> a specified user borrows a book from the library for a
+		specified number of days
+	
+	9. RETURN <user_name> <book_name> <days_since_borrow> <rating>
+	
+		-> a specified user returns a book back to the library and it's
+		granted a certain score if he returns the book earlier than them
+		first declared. If them returns a book late, them will lose score.
+		Them can also give the returned book a rating.
+		
+	10. LOST <user_name> <book_name>
+	
+		-> a specified user declares a book as lost and loses 50 points.
+		The book is removed from the library hashtable.
+	
+	11. EXIT
+		
+		-> frees all allocated data and exits the program showing the
+		final rankings.
+	
+Other details:
+	-> I used a generic hashtable for the library, for each book's definitions
+	and for the user list.
+	
+	-> Each node's data inside the hashtable is a struct named 'info' that has
+	a void pointer to a key and a value. (ex. for a book, the key is the name
+	and the value is a 'book' struct)
+	
+	-> The hashtable and linked list functions are made by myself in previous
+	laboratories. The only functions that were copied are the hash functions.
+	
+	-> Some data (ex. inside the user and book struct) are allocated static
+	because it was a mess to free them at the end. Their length is known.
+	
+Comments:
+	-> I think the users and books sorting can be done easier, but I tried
+	to do it as efficient as possible (going through the nodes was hard to
+	figure out because when I made the swaps the pointers also swapped). If
+	I have used the 'get_node' function to get a specific node I would've
+	got timeouts on the tests.
+	
+	-> From this homework I think I clarified any suspicions about hashtables
+	and how they work. I can now see their further uses.
+	
+	-> I also learned how to use the VS Code graphic interface debugger
+	because I was really obliged to when I got stuck debugging.
+	
+	-> I strenghtened my work with pointers and how to free them because
+	there were so many links inside this homework and their hashtables.
+
+Resources:
+	-> Not much to be said here, I just looked over Stack Overflow a lot
+	while debugging in Valgrind.
+	
+	
